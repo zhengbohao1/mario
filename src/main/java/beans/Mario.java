@@ -27,15 +27,46 @@ public class Mario implements Runnable{
     private int xspeed;
     private int yspeed;//跳跃速度
     //定义变量，记录马里奥的上升状态
-    private int up;
+    //private int up;
     //定义图片的索引，针对左移动和右移动
     private int index;
     private int uptime=0;
     //判断是否可以起飞
     private boolean isfly=false;
-    public Mario(){
-
+    public int getX() {
+        return x;
     }
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setBg(BackGround bg) {
+        this.bg = bg;
+    }
+
+    public boolean isIsdeath() {
+        return isdeath;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public boolean isIscastel() {
+        return iscastel;
+    }
+
     public Mario(int x, int y) {
         this.x = x;
         this.y = y;
@@ -120,92 +151,6 @@ public class Mario implements Runnable{
         }
         yspeed=10;
    }
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public BufferedImage getImage() {
-        return image;
-    }
-
-    public void setImage(BufferedImage image) {
-        this.image = image;
-    }
-
-    public BackGround getBg() {
-        return bg;
-    }
-
-    public void setBg(BackGround bg) {
-        this.bg = bg;
-    }
-
-    public Thread getThread() {
-        return thread;
-    }
-
-    public void setThread(Thread thread) {
-        this.thread = thread;
-    }
-
-    public int getXspeed() {
-        return xspeed;
-    }
-
-    public void setXspeed(int xspeed) {
-        this.xspeed = xspeed;
-    }
-
-    public int getYspeed() {
-        return yspeed;
-    }
-
-    public boolean isIsdeath() {
-        return isdeath;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setIsdeath(boolean isdeath) {
-        this.isdeath = isdeath;
-    }
-
-    public void setYspeed(int yspeed) {
-        this.yspeed = yspeed;
-    }
-
-    public int getUp() {
-        return up;
-    }
-
-    public void setUp(int up) {
-        this.up = up;
-    }
-    public boolean isIscastel() {
-        return iscastel;
-    }
     @Override
     public void run() {
         //控制马里奥无线移动
@@ -263,7 +208,7 @@ public class Mario implements Runnable{
                         }
                         uptime=0;
                     }
-                    if(isfly==true){
+                    if(isfly){
                         uptime=10;
                         yspeed=-10;
                         isfly=false;
@@ -359,7 +304,6 @@ public class Mario implements Runnable{
             if (Action.JUMP_RIGHT.equals(status)){
                 image=Constant.jumpR;
             }
-            //我们需要控制一下线程的速度
             try {
                 Thread.sleep(40);
             } catch (InterruptedException e) {

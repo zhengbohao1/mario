@@ -16,9 +16,6 @@ public class Obstacle implements Runnable{
     //定义变量存放当前的背景
     private BackGround bg;
     private  Thread thread=new Thread(this);
-    public Obstacle(){
-
-    }
 
     public Obstacle(int x, int y, int type, BackGround bg) {
         this.x = x;
@@ -36,41 +33,21 @@ public class Obstacle implements Runnable{
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
-        this.y = y;
-    }
 
     public BufferedImage getObstacleImage() {
         return obstacleImage;
     }
 
-    public void setObstacleImage(BufferedImage obstacleImage) {
-        this.obstacleImage = obstacleImage;
-    }
 
     public int getType() {
         return type;
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public BackGround getBg() {
-        return bg;
-    }
-
-    public void setBg(BackGround bg) {
-        this.bg = bg;
-    }
 
     @Override
     public void run() {

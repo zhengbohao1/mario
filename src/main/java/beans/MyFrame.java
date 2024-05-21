@@ -92,8 +92,8 @@ public class MyFrame extends JFrame implements KeyListener,Runnable {
             }
             //判断马里奥是否通关
             if(mario.getX()>900){
-                current_backGround=backGrounds.get(current_backGround.getLevel());
-                mario.setBg(current_backGround);//换了个背景
+                current_backGround=backGrounds.get(current_backGround.getLevel());//0为1.1为2
+                mario.setBg(current_backGround);//换了个背景，这步很重要，不然就会依旧停留在第一关，但是背景显示第二关
                 mario.setX(20);//然后把马里奥放回起始点，实现闯关的感觉
                 mario.setY(510);
             }

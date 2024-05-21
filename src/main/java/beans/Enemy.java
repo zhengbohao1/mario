@@ -3,8 +3,7 @@ package beans;
 import util.Constant;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Enemy implements Runnable{
     //存储当前坐标
@@ -87,81 +86,20 @@ public class Enemy implements Runnable{
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
-        this.y = y;
-    }
 
     public int getType() {
         return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public boolean isDirection() {
-        return direction;
-    }
-
-    public void setDirection(boolean direction) {
-        this.direction = direction;
     }
 
     public BufferedImage getImage() {
         return image;
     }
 
-    public void setImage(BufferedImage image) {
-        this.image = image;
-    }
-
-    public BackGround getBg() {
-        return bg;
-    }
-
-    public void setBg(BackGround bg) {
-        this.bg = bg;
-    }
-
-    public int getMax_y() {
-        return max_y;
-    }
-
-    public void setMax_y(int max_y) {
-        this.max_y = max_y;
-    }
-
-    public int getMin_y() {
-        return min_y;
-    }
-
-    public void setMin_y(int min_y) {
-        this.min_y = min_y;
-    }
-
-    public int getImage_type_turtle() {
-        return image_type_turtle;
-    }
-
-    public void setImage_type_turtle(int image_type_turtle) {
-        this.image_type_turtle = image_type_turtle;
-    }
-
-    public int getBefore_y() {
-        return before_y;
-    }
-
-    public int getBefore_x() {
-        return before_x;
-    }
 
     @Override
     public void run() {
@@ -171,12 +109,12 @@ public class Enemy implements Runnable{
                 if(direction){
                     this.x-=2;
                     image_type_turtle=image_type_turtle==1?0:1;
-                    image= Constant.turtle_enemies.get(image_type_turtle);
+                    /*image= Constant.turtle_enemies.get(image_type_turtle);*/
                 }else{
                     this.x+=2;
                     image_type_turtle=image_type_turtle==2?3:2;
-                    image= Constant.turtle_enemies.get(image_type_turtle);
                }
+                image= Constant.turtle_enemies.get(image_type_turtle);
             }
             boolean canleft=true;
             boolean canright=true;
@@ -209,8 +147,7 @@ public class Enemy implements Runnable{
                     this.y+=2;
                 }
                 image_type_turtle=image_type_turtle==1?0:1;
-                image= Constant.flower_enemies.get(image_type_turtle);
-                //判断食人花是否到达极限文职
+                //判断食人花是否到达极限位置
                 if(direction&&(this.y==max_y)){
                     direction=false;
                 }
@@ -233,10 +170,8 @@ public class Enemy implements Runnable{
                     //判断下方是否有障碍物
                     if(ob.getX()>=this.x-30&&ob.getX()<=this.x+30&&ob.getY()<=this.y+30&&ob.getY()>=this.y){
                         ci_pengdi=true;
+                        break;
                     }
-                   /* else{
-                        ci_pengdi=false;
-                    }*/
                 }
             }
             //是子弹

@@ -41,7 +41,7 @@ public class BackGround {
     public BackGround(){
 
     }
-    public BackGround(int level) throws InterruptedException {
+    public BackGround(int level)   {
         this.level=level;
         //准备背景图
 
@@ -268,31 +268,19 @@ public class BackGround {
         return bg;
     }
 
-    public void setBg(BufferedImage bg) {
-        this.bg = bg;
-    }
 
     public int getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
 
     public List<Obstacle> getObstacles() {
         return obstacles;
     }
 
-    public void setObstacles(List<Obstacle> obstacles) {
-        this.obstacles = obstacles;
-    }
 
     public List<Enemy> getEnemies() {
         return enemies;
     }
 
-    public void setEnemies(List<Enemy> enemies) {
-        this.enemies = enemies;
-    }
 }
